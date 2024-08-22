@@ -2,6 +2,9 @@
 PRIMITIVE TYPES
 
 """
+
+SOME_INT = 345
+
 def count_bits(x: int) -> int:
     """Count the number of bits that are set 
     to 1 in a non-negative integer
@@ -20,6 +23,17 @@ def parity(x: int) -> int:
         result ^= x & 1
         x >>= 1
     return result
+
+def parity_better(x: int) -> int:
+    """Improvement: Erase lowest set bit for 
+    reducing time complexity"""
+    result = 0
+    while x:
+        result ^= 1
+        x &= x - 1 # Drop the lowest set bit of x
+    return result
+
+
 
 
 if __name__=="__main__":
